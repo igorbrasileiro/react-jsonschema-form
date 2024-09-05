@@ -1,5 +1,5 @@
 import get from 'lodash/get';
-import isEqual from 'lodash/isEqual';
+import fastDeepEqual from 'fast-deep-equal';
 import set from 'lodash/set';
 import times from 'lodash/times';
 import transform from 'lodash/transform';
@@ -15,10 +15,10 @@ import {
   ANY_OF_KEY,
   DEPENDENCIES_KEY,
   IF_KEY,
-  ONE_OF_KEY,
-  REF_KEY,
-  PROPERTIES_KEY,
   ITEMS_KEY,
+  ONE_OF_KEY,
+  PROPERTIES_KEY,
+  REF_KEY,
 } from '../constants';
 import findSchemaDefinition, { splitKeyElementFromObject } from '../findSchemaDefinition';
 import getDiscriminatorFieldFromSchema from '../getDiscriminatorFieldFromSchema';
@@ -196,7 +196,10 @@ export function resolveSchema<T = any, S extends StrictRJSFSchema = RJSFSchema, 
       )
     );
     const allPermutations = getAllPermutationsOfXxxOf<S>(allOfSchemaElements);
-    return allPermutations.map((permutation) => ({ ...schema, allOf: permutation }));
+    return allPermutations.map((permutation) => ({
+      ...schema,
+      allOf: permutation,
+    }));
   }
   // No $ref or dependencies or allOf attribute was found, returning the original schema.
   return [schema];
@@ -293,7 +296,7 @@ export function resolveAllReferences<S extends StrictRJSFSchema = RJSFSchema>(
     };
   }
 
-  return isEqual(schema, resolvedSchema) ? schema : resolvedSchema;
+  return fastDeepEqual(schema, resolvedSchema) ? schema : resolvedSchema;
 }
 
 /** Creates new 'properties' items for each key in the `formData`

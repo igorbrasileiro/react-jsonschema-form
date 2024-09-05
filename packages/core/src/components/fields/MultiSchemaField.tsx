@@ -4,7 +4,6 @@ import isEmpty from 'lodash/isEmpty';
 import omit from 'lodash/omit';
 import {
   ANY_OF_KEY,
-  deepEquals,
   ERRORS_KEY,
   FieldProps,
   FormContextType,
@@ -18,6 +17,7 @@ import {
   TranslatableString,
   UiSchema,
 } from '@rjsf/utils';
+import fastDeepEqual from 'fast-deep-equal';
 
 /** Type used for the state of the `AnyOfField` component */
 type AnyOfFieldState<S extends StrictRJSFSchema = RJSFSchema> = {
@@ -67,7 +67,7 @@ class AnyOfField<T = any, S extends StrictRJSFSchema = RJSFSchema, F extends For
     const { formData, options, idSchema } = this.props;
     const { selectedOption } = this.state;
     let newState = this.state;
-    if (!deepEquals(prevProps.options, options)) {
+    if (!fastDeepEqual(prevProps.options, options)) {
       const {
         registry: { schemaUtils },
       } = this.props;
@@ -75,7 +75,7 @@ class AnyOfField<T = any, S extends StrictRJSFSchema = RJSFSchema, F extends For
       const retrievedOptions = options.map((opt: S) => schemaUtils.retrieveSchema(opt, formData));
       newState = { selectedOption, retrievedOptions };
     }
-    if (!deepEquals(formData, prevProps.formData) && idSchema.$id === prevProps.idSchema.$id) {
+    if (!fastDeepEqual(formData, prevProps.formData) && idSchema.$id === prevProps.idSchema.$id) {
       const { retrievedOptions } = newState;
       const matchingOption = this.getMatchingOption(selectedOption, formData, retrievedOptions);
 

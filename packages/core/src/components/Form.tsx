@@ -1,10 +1,11 @@
-import { Component, ElementType, FormEvent, ReactNode, Ref, RefObject, createRef } from 'react';
+import { Component, createRef, ElementType, FormEvent, ReactNode, Ref, RefObject } from 'react';
 import {
   createSchemaUtils,
   CustomValidator,
   deepEquals,
   ErrorSchema,
   ErrorTransformer,
+  Experimental_DefaultFormStateBehavior,
   FormContextType,
   GenericObjectType,
   getTemplate,
@@ -14,31 +15,31 @@ import {
   mergeObjects,
   NAME_KEY,
   PathSchema,
-  StrictRJSFSchema,
   Registry,
   RegistryFieldsType,
   RegistryWidgetsType,
+  RJSF_ADDITIONAL_PROPERTIES_FLAG,
   RJSFSchema,
   RJSFValidationError,
-  RJSF_ADDITIONAL_PROPERTIES_FLAG,
   SchemaUtilsType,
   shouldRender,
+  StrictRJSFSchema,
   SUBMIT_BTN_OPTIONS_KEY,
   TemplatesType,
   toErrorList,
-  UiSchema,
   UI_GLOBAL_OPTIONS_KEY,
   UI_OPTIONS_KEY,
+  UiSchema,
   ValidationData,
   validationDataMerge,
   ValidatorType,
-  Experimental_DefaultFormStateBehavior,
 } from '@rjsf/utils';
 import _forEach from 'lodash/forEach';
 import _get from 'lodash/get';
 import _isEmpty from 'lodash/isEmpty';
 import _pick from 'lodash/pick';
 import _toPath from 'lodash/toPath';
+import fastDeepEqual from 'fast-deep-equal';
 
 import getDefaultRegistry from '../getDefaultRegistry';
 
@@ -282,7 +283,7 @@ export default class Form<
     }
 
     this.state = this.getStateFromProps(props, props.formData);
-    if (this.props.onChange && !deepEquals(this.state.formData, this.props.formData)) {
+    if (this.props.onChange && !fastDeepEqual(this.state.formData, this.props.formData)) {
       this.props.onChange(this.state);
     }
     this.formElement = createRef();
@@ -309,10 +310,14 @@ export default class Form<
   getSnapshotBeforeUpdate(
     prevProps: FormProps<T, S, F>,
     prevState: FormState<T, S, F>
-  ): { nextState: FormState<T, S, F>; shouldUpdate: true } | { shouldUpdate: false } {
+  ):
+    | { nextState: FormState<T, S, F>; shouldUpdate: true }
+    | {
+        shouldUpdate: false;
+      } {
     if (!deepEquals(this.props, prevProps)) {
-      const isSchemaChanged = !deepEquals(prevProps.schema, this.props.schema);
-      const isFormDataChanged = !deepEquals(prevProps.formData, this.props.formData);
+      const isSchemaChanged = !fastDeepEqual(prevProps.schema, this.props.schema);
+      const isFormDataChanged = !fastDeepEqual(prevProps.formData, this.props.formData);
       const nextState = this.getStateFromProps(
         this.props,
         this.props.formData,
@@ -346,14 +351,18 @@ export default class Form<
   componentDidUpdate(
     _: FormProps<T, S, F>,
     prevState: FormState<T, S, F>,
-    snapshot: { nextState: FormState<T, S, F>; shouldUpdate: true } | { shouldUpdate: false }
+    snapshot:
+      | { nextState: FormState<T, S, F>; shouldUpdate: true }
+      | {
+          shouldUpdate: false;
+        }
   ) {
     if (snapshot.shouldUpdate) {
       const { nextState } = snapshot;
 
       if (
-        !deepEquals(nextState.formData, this.props.formData) &&
-        !deepEquals(nextState.formData, prevState.formData) &&
+        !fastDeepEqual(nextState.formData, this.props.formData) &&
+        !fastDeepEqual(nextState.formData, prevState.formData) &&
         this.props.onChange
       ) {
         this.props.onChange(nextState);
@@ -692,7 +701,6 @@ export default class Form<
    * Callback function to handle reset form data.
    * - Reset all fields with default values.
    * - Reset validations and errors
-   *
    */
   reset = () => {
     const { onChange } = this.props;
@@ -772,7 +780,14 @@ export default class Form<
         },
         () => {
           if (onSubmit) {
-            onSubmit({ ...this.state, formData: newFormData, status: 'submitted' }, event);
+            onSubmit(
+              {
+                ...this.state,
+                formData: newFormData,
+                status: 'submitted',
+              },
+              event
+            );
           }
         }
       );
@@ -956,9 +971,14 @@ export default class Form<
 
     let { [SUBMIT_BTN_OPTIONS_KEY]: submitOptions = {} } = getUiOptions<T, S, F>(uiSchema);
     if (disabled) {
-      submitOptions = { ...submitOptions, props: { ...submitOptions.props, disabled: true } };
+      submitOptions = {
+        ...submitOptions,
+        props: { ...submitOptions.props, disabled: true },
+      };
     }
-    const submitUiSchema = { [UI_OPTIONS_KEY]: { [SUBMIT_BTN_OPTIONS_KEY]: submitOptions } };
+    const submitUiSchema = {
+      [UI_OPTIONS_KEY]: { [SUBMIT_BTN_OPTIONS_KEY]: submitOptions },
+    };
 
     return (
       <FormTag
