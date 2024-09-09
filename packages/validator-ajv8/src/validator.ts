@@ -1,10 +1,10 @@
 import Ajv, { ErrorObject, ValidateFunction } from 'ajv';
 import {
   CustomValidator,
-  deepEquals,
   ErrorSchema,
   ErrorTransformer,
   FormContextType,
+  hashForSchema,
   ID_KEY,
   RJSFSchema,
   ROOT_SCHEMA_PREFIX,
@@ -14,8 +14,8 @@ import {
   ValidationData,
   ValidatorType,
   withIdRefPrefix,
-  hashForSchema,
 } from '@rjsf/utils';
+import fastDeepEqual from 'fast-deep-equal';
 
 import { CustomValidatorOptionsType, Localizer } from './types';
 import createAjvInstance from './createAjvInstance';
@@ -137,7 +137,7 @@ export default class AJV8Validator<T = any, S extends StrictRJSFSchema = RJSFSch
     // else if the root schemas don't match, we should remove and add the root schema so we don't have to remove and recompile the schema every run.
     if (this.ajv.getSchema(rootSchemaId) === undefined) {
       this.ajv.addSchema(rootSchema, rootSchemaId);
-    } else if (!deepEquals(rootSchema, this.ajv.getSchema(rootSchemaId)?.schema)) {
+    } else if (!fastDeepEqual(rootSchema, this.ajv.getSchema(rootSchemaId)?.schema)) {
       this.ajv.removeSchema(rootSchemaId);
       this.ajv.addSchema(rootSchema, rootSchemaId);
     }

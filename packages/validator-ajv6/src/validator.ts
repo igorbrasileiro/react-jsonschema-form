@@ -2,7 +2,6 @@ import { Ajv, ErrorObject } from 'ajv';
 import {
   createErrorHandler,
   CustomValidator,
-  deepEquals,
   ErrorSchema,
   ErrorTransformer,
   FormContextType,
@@ -20,6 +19,7 @@ import {
   ValidatorType,
   withIdRefPrefix,
 } from '@rjsf/utils';
+import fastDeepEqual from 'fast-deep-equal';
 
 import { CustomValidatorOptionsType } from './types';
 import createAjvInstance from './createAjvInstance';
@@ -170,7 +170,7 @@ export default class AJV6Validator<T = any, S extends StrictRJSFSchema = RJSFSch
     // else 'handleRootSchemaChange' should be called if the root schema changes so we don't have to remove and recompile the schema every run.
     if (this.ajv.getSchema(ROOT_SCHEMA_PREFIX) === undefined) {
       this.ajv.addSchema(rootSchema, ROOT_SCHEMA_PREFIX);
-    } else if (!deepEquals(rootSchema, this.ajv.getSchema(ROOT_SCHEMA_PREFIX)?.schema)) {
+    } else if (!fastDeepEqual(rootSchema, this.ajv.getSchema(ROOT_SCHEMA_PREFIX)?.schema)) {
       this.ajv.removeSchema(rootSchemaId);
       this.ajv.addSchema(rootSchema, rootSchemaId);
     }

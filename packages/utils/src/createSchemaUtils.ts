@@ -1,4 +1,5 @@
-import deepEquals from './deepEquals';
+import fastDeepEqual from 'fast-deep-equal';
+
 import {
   ErrorSchema,
   Experimental_DefaultFormStateBehavior,
@@ -14,9 +15,9 @@ import {
   ValidatorType,
 } from './types';
 import {
+  getClosestMatchingOption,
   getDefaultFormState,
   getDisplayLabel,
-  getClosestMatchingOption,
   getFirstMatchingOption,
   getMatchingOption,
   isFilesArray,
@@ -84,8 +85,8 @@ class SchemaUtils<T = any, S extends StrictRJSFSchema = RJSFSchema, F extends Fo
     }
     return (
       this.validator !== validator ||
-      !deepEquals(this.rootSchema, rootSchema) ||
-      !deepEquals(this.experimental_defaultFormStateBehavior, experimental_defaultFormStateBehavior)
+      !fastDeepEqual(this.rootSchema, rootSchema) ||
+      !fastDeepEqual(this.experimental_defaultFormStateBehavior, experimental_defaultFormStateBehavior)
     );
   }
 
