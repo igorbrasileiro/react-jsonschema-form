@@ -110,7 +110,8 @@ export function calculateIndexScore<T = any, S extends StrictRJSFSchema = RJSFSc
               calculateIndexScore<T, S, F>(validator, rootSchema, value as S, formValue, experimental_customMergeAllOf)
             );
           }
-          if (value.type === guessType(formValue)) {
+          const guessedType = guessType(formValue);
+          if (guessType(formValue) !== 'null' && value.type === guessedType) {
             // If the types match, then we bump the score by one
             let newScore = score + 1;
             if (value.default) {
