@@ -1,6 +1,6 @@
 import isEqual from 'lodash/isEqual';
 
-import { EnumOptionsType, RJSFSchema, StrictRJSFSchema } from './types';
+import { EnumOptionsType, RJSFSchema, StrictRJSFSchema } from './types.ts';
 
 /** Determines whether the given `value` is (one of) the `selected` value(s).
  *

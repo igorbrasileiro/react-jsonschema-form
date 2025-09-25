@@ -1,6 +1,12 @@
-import isConstant from '../isConstant';
-import { FormContextType, RJSFSchema, StrictRJSFSchema, ValidatorType, Experimental_CustomMergeAllOf } from '../types';
-import retrieveSchema from './retrieveSchema';
+import isConstant from '../isConstant.ts';
+import {
+  FormContextType,
+  RJSFSchema,
+  StrictRJSFSchema,
+  ValidatorType,
+  Experimental_CustomMergeAllOf,
+} from '../types.ts';
+import retrieveSchema from './retrieveSchema.ts';
 
 /** Checks to see if the `schema` combination represents a select
  *

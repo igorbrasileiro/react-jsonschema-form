@@ -1,7 +1,7 @@
 import isString from 'lodash/isString';
 
-import { IdSchema } from './types';
-import { ID_KEY } from './constants';
+import { IdSchema } from './types.ts';
+import { ID_KEY } from './constants.ts';
 
 /** Generates a consistent `id` pattern for a given `id` and a `suffix`
  *

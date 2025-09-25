@@ -1,7 +1,7 @@
 import isPlainObject from 'lodash/isPlainObject';
 
-import { ERRORS_KEY } from './constants';
-import { FieldValidation, FormValidation, GenericObjectType } from './types';
+import { ERRORS_KEY } from './constants.ts';
+import { FieldValidation, FormValidation, GenericObjectType } from './types.ts';
 
 /** Given a `formData` object, recursively creates a `FormValidation` error handling structure around it
  *

@@ -1,8 +1,8 @@
 import jsonpointer from 'jsonpointer';
 import omit from 'lodash/omit';
 
-import { REF_KEY } from './constants';
-import { GenericObjectType, RJSFSchema, StrictRJSFSchema } from './types';
+import { REF_KEY } from './constants.ts';
+import { GenericObjectType, RJSFSchema, StrictRJSFSchema } from './types.ts';
 
 /** Splits out the value at the `key` in `object` from the `object`, returning an array that contains in the first
  * location, the `object` minus the `key: value` and in the second location the `value`.

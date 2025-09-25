@@ -1,10 +1,10 @@
 import forEach from 'lodash/forEach';
 import isEqual from 'lodash/isEqual';
 
-import { FormContextType, RJSFSchema, StrictRJSFSchema } from '../types';
-import { PROPERTIES_KEY, ITEMS_KEY } from '../constants';
-import ParserValidator, { SchemaMap } from './ParserValidator';
-import { retrieveSchemaInternal, resolveAnyOrOneOfSchemas } from '../schema/retrieveSchema';
+import { FormContextType, RJSFSchema, StrictRJSFSchema } from '../types.ts';
+import { PROPERTIES_KEY, ITEMS_KEY } from '../constants.ts';
+import ParserValidator, { SchemaMap } from './ParserValidator.ts';
+import { retrieveSchemaInternal, resolveAnyOrOneOfSchemas } from '../schema/retrieveSchema.ts';
 
 /** Recursive function used to parse the given `schema` belonging to the `rootSchema`. The `validator` is used to
  * capture the sub-schemas that the `isValid()` function is called with. For each schema returned by the

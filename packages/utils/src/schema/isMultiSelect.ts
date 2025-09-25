@@ -1,6 +1,12 @@
-import { FormContextType, RJSFSchema, StrictRJSFSchema, ValidatorType, Experimental_CustomMergeAllOf } from '../types';
+import {
+  FormContextType,
+  RJSFSchema,
+  StrictRJSFSchema,
+  ValidatorType,
+  Experimental_CustomMergeAllOf,
+} from '../types.ts';
 
-import isSelect from './isSelect';
+import isSelect from './isSelect.ts';
 
 /** Checks to see if the `schema` combination represents a multi-select
  *

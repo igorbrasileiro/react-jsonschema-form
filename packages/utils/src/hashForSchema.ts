@@ -1,4 +1,4 @@
-import { RJSFSchema, StrictRJSFSchema } from './types';
+import { RJSFSchema, StrictRJSFSchema } from './types.ts';
 
 /** JS has no built-in hashing function, so rolling our own
  *  based on Java's hashing fn:

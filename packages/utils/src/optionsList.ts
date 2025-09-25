@@ -1,6 +1,6 @@
-import toConstant from './toConstant';
-import { RJSFSchema, EnumOptionsType, StrictRJSFSchema, FormContextType, UiSchema } from './types';
-import getUiOptions from './getUiOptions';
+import toConstant from './toConstant.ts';
+import { RJSFSchema, EnumOptionsType, StrictRJSFSchema, FormContextType, UiSchema } from './types.ts';
+import getUiOptions from './getUiOptions.ts';
 
 /** Gets the list of options from the `schema`. If the schema has an enum list, then those enum values are returned. The
  * labels for the options will be extracted from the non-standard, RJSF-deprecated `enumNames` if it exists, otherwise

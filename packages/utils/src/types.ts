@@ -9,7 +9,7 @@ import type {
 } from 'react';
 import { JSONSchema7 } from 'json-schema';
 
-import { TranslatableString } from './enums';
+import { TranslatableString } from './enums.ts';
 
 /** The representation of any generic object type, usually used as an intersection on other types to make them more
  * flexible in the properties they support (i.e. anything else)

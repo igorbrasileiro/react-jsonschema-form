@@ -10,16 +10,16 @@ import {
   ONE_OF_KEY,
   REF_KEY,
   ALL_OF_KEY,
-} from '../constants';
-import findSchemaDefinition from '../findSchemaDefinition';
-import getClosestMatchingOption from './getClosestMatchingOption';
-import getDiscriminatorFieldFromSchema from '../getDiscriminatorFieldFromSchema';
-import getSchemaType from '../getSchemaType';
-import isObject from '../isObject';
-import isFixedItems from '../isFixedItems';
-import mergeDefaultsWithFormData from '../mergeDefaultsWithFormData';
-import mergeObjects from '../mergeObjects';
-import mergeSchemas from '../mergeSchemas';
+} from '../constants.ts';
+import findSchemaDefinition from '../findSchemaDefinition.ts';
+import getClosestMatchingOption from './getClosestMatchingOption.ts';
+import getDiscriminatorFieldFromSchema from '../getDiscriminatorFieldFromSchema.ts';
+import getSchemaType from '../getSchemaType.ts';
+import isObject from '../isObject.ts';
+import isFixedItems from '../isFixedItems.ts';
+import mergeDefaultsWithFormData from '../mergeDefaultsWithFormData.ts';
+import mergeObjects from '../mergeObjects.ts';
+import mergeSchemas from '../mergeSchemas.ts';
 import {
   Experimental_CustomMergeAllOf,
   Experimental_DefaultFormStateBehavior,
@@ -28,9 +28,9 @@ import {
   RJSFSchema,
   StrictRJSFSchema,
   ValidatorType,
-} from '../types';
-import isMultiSelect from './isMultiSelect';
-import retrieveSchema, { resolveDependencies } from './retrieveSchema';
+} from '../types.ts';
+import isMultiSelect from './isMultiSelect.ts';
+import retrieveSchema, { resolveDependencies } from './retrieveSchema.ts';
 import { JSONSchema7Object } from 'json-schema';
 
 const PRIMITIVE_TYPES = ['string', 'number', 'integer', 'boolean', 'null'];

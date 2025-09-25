@@ -1,7 +1,7 @@
-import { UI_FIELD_KEY, UI_WIDGET_KEY } from '../constants';
-import getSchemaType from '../getSchemaType';
-import getUiOptions from '../getUiOptions';
-import isCustomWidget from '../isCustomWidget';
+import { UI_FIELD_KEY, UI_WIDGET_KEY } from '../constants.ts';
+import getSchemaType from '../getSchemaType.ts';
+import getUiOptions from '../getUiOptions.ts';
+import isCustomWidget from '../isCustomWidget.ts';
 import {
   FormContextType,
   GlobalUISchemaOptions,
@@ -10,9 +10,9 @@ import {
   UiSchema,
   ValidatorType,
   Experimental_CustomMergeAllOf,
-} from '../types';
-import isFilesArray from './isFilesArray';
-import isMultiSelect from './isMultiSelect';
+} from '../types.ts';
+import isFilesArray from './isFilesArray.ts';
+import isMultiSelect from './isMultiSelect.ts';
 
 /** Determines whether the combination of `schema` and `uiSchema` properties indicates that the label for the `schema`
  * should be displayed in a UI.

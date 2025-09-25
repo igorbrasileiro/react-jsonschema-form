@@ -1,7 +1,7 @@
 import isEqual from 'lodash/isEqual';
 
-import { EnumOptionsType, RJSFSchema, StrictRJSFSchema } from './types';
-import enumOptionsValueForIndex from './enumOptionsValueForIndex';
+import { EnumOptionsType, RJSFSchema, StrictRJSFSchema } from './types.ts';
+import enumOptionsValueForIndex from './enumOptionsValueForIndex.ts';
 
 /** Removes the enum option value at the `valueIndex` from the currently `selected` (list of) value(s). If `selected` is
  * a list, then that list is updated to remove the enum option value with the `valueIndex` in `allEnumOptions`. If it is

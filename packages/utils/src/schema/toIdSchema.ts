@@ -1,8 +1,8 @@
 import get from 'lodash/get';
 import isEqual from 'lodash/isEqual';
 
-import { ALL_OF_KEY, DEPENDENCIES_KEY, ID_KEY, ITEMS_KEY, PROPERTIES_KEY, REF_KEY } from '../constants';
-import isObject from '../isObject';
+import { ALL_OF_KEY, DEPENDENCIES_KEY, ID_KEY, ITEMS_KEY, PROPERTIES_KEY, REF_KEY } from '../constants.ts';
+import isObject from '../isObject.ts';
 import {
   Experimental_CustomMergeAllOf,
   FormContextType,
@@ -11,9 +11,9 @@ import {
   RJSFSchema,
   StrictRJSFSchema,
   ValidatorType,
-} from '../types';
-import retrieveSchema from './retrieveSchema';
-import getSchemaType from '../getSchemaType';
+} from '../types.ts';
+import retrieveSchema from './retrieveSchema.ts';
+import getSchemaType from '../getSchemaType.ts';
 
 /** An internal helper that generates an `IdSchema` object for the `schema`, recursively with protection against
  * infinite recursion

@@ -8,9 +8,9 @@ import {
   RJSFSchema,
   StrictRJSFSchema,
   ValidatorType,
-} from '../types';
-import { PROPERTIES_KEY, REF_KEY } from '../constants';
-import retrieveSchema from './retrieveSchema';
+} from '../types.ts';
+import { PROPERTIES_KEY, REF_KEY } from '../constants.ts';
+import retrieveSchema from './retrieveSchema.ts';
 
 const NO_VALUE = Symbol('no Value');
 

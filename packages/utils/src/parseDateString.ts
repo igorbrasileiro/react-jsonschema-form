@@ -1,4 +1,4 @@
-import { DateObject } from './types';
+import { DateObject } from './types.ts';
 
 /** Parses the `dateString` into a `DateObject`, including the time information when `includeTime` is true
  *

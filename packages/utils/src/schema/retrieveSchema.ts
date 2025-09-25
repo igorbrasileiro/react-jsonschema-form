@@ -19,12 +19,12 @@ import {
   REF_KEY,
   PROPERTIES_KEY,
   ITEMS_KEY,
-} from '../constants';
-import findSchemaDefinition, { splitKeyElementFromObject } from '../findSchemaDefinition';
-import getDiscriminatorFieldFromSchema from '../getDiscriminatorFieldFromSchema';
-import guessType from '../guessType';
-import isObject from '../isObject';
-import mergeSchemas from '../mergeSchemas';
+} from '../constants.ts';
+import findSchemaDefinition, { splitKeyElementFromObject } from '../findSchemaDefinition.ts';
+import getDiscriminatorFieldFromSchema from '../getDiscriminatorFieldFromSchema.ts';
+import guessType from '../guessType.ts';
+import isObject from '../isObject.ts';
+import mergeSchemas from '../mergeSchemas.ts';
 import {
   Experimental_CustomMergeAllOf,
   FormContextType,
@@ -32,8 +32,8 @@ import {
   RJSFSchema,
   StrictRJSFSchema,
   ValidatorType,
-} from '../types';
-import getFirstMatchingOption from './getFirstMatchingOption';
+} from '../types.ts';
+import getFirstMatchingOption from './getFirstMatchingOption.ts';
 
 /** Retrieves an expanded schema that has had all of its conditions, additional properties, references and dependencies
  * resolved and merged into the `schema` given a `validator`, `rootSchema` and `rawFormData` that is used to do the

@@ -3,8 +3,8 @@ import get from 'lodash/get';
 import set from 'lodash/set';
 import setWith from 'lodash/setWith';
 
-import { ErrorSchema } from './types';
-import { ERRORS_KEY } from './constants';
+import { ErrorSchema } from './types.ts';
+import { ERRORS_KEY } from './constants.ts';
 
 /** The `ErrorSchemaBuilder<T>` is used to build an `ErrorSchema<T>` since the definition of the `ErrorSchema` type is
  * designed for reading information rather than writing it. Use this class to add, replace or clear errors in an error

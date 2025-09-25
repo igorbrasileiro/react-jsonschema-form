@@ -3,8 +3,8 @@ import ReactIs from 'react-is';
 import get from 'lodash/get';
 import set from 'lodash/set';
 
-import { FormContextType, RJSFSchema, Widget, RegistryWidgetsType, StrictRJSFSchema } from './types';
-import getSchemaType from './getSchemaType';
+import { FormContextType, RJSFSchema, Widget, RegistryWidgetsType, StrictRJSFSchema } from './types.ts';
+import getSchemaType from './getSchemaType.ts';
 
 /** The map of schema types to widget type to widget name
  */

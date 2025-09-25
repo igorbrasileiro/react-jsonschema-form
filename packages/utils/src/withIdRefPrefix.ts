@@ -1,5 +1,5 @@
-import { REF_KEY, ROOT_SCHEMA_PREFIX } from './constants';
-import { RJSFSchema, StrictRJSFSchema } from './types';
+import { REF_KEY, ROOT_SCHEMA_PREFIX } from './constants.ts';
+import { RJSFSchema, StrictRJSFSchema } from './types.ts';
 import isObject from 'lodash/isObject';
 
 /** Takes a `node` object and transforms any contained `$ref` node variables with a prefix, recursively calling

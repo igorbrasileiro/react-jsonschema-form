@@ -1,8 +1,8 @@
 import isEmpty from 'lodash/isEmpty';
 
-import mergeObjects from './mergeObjects';
-import toErrorList from './toErrorList';
-import { ErrorSchema, ValidationData } from './types';
+import mergeObjects from './mergeObjects.ts';
+import toErrorList from './toErrorList.ts';
+import { ErrorSchema, ValidationData } from './types.ts';
 
 /** Merges the errors in `additionalErrorSchema` into the existing `validationData` by combining the hierarchies in the
  * two `ErrorSchema`s and then appending the error list from the `additionalErrorSchema` obtained by calling

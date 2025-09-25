@@ -1,7 +1,7 @@
 import get from 'lodash/get';
 import isString from 'lodash/isString';
 
-import { RJSFSchema, StrictRJSFSchema } from './types';
+import { RJSFSchema, StrictRJSFSchema } from './types.ts';
 
 /** Returns the `discriminator.propertyName` when defined in the `schema` if it is a string. A warning is generated when
  * it is not a string. Returns `undefined` when a valid discriminator is not present.

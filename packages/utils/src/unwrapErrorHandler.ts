@@ -1,6 +1,6 @@
 import isPlainObject from 'lodash/isPlainObject';
 
-import { ErrorSchema, FormValidation, GenericObjectType } from './types';
+import { ErrorSchema, FormValidation, GenericObjectType } from './types.ts';
 
 /** Unwraps the `errorHandler` structure into the associated `ErrorSchema`, stripping the `addError()` functions from it
  *

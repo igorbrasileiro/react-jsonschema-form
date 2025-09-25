@@ -1,8 +1,8 @@
 import get from 'lodash/get';
 import isEqual from 'lodash/isEqual';
 
-import { ID_KEY } from '../constants';
-import hashForSchema from '../hashForSchema';
+import { ID_KEY } from '../constants.ts';
+import hashForSchema from '../hashForSchema.ts';
 import {
   CustomValidator,
   ErrorSchema,
@@ -14,7 +14,7 @@ import {
   UiSchema,
   ValidationData,
   ValidatorType,
-} from '../types';
+} from '../types.ts';
 
 /** The type of the map of schema hash to schema
  */

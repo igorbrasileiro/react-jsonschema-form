@@ -1,7 +1,7 @@
 import isPlainObject from 'lodash/isPlainObject';
 
-import { ERRORS_KEY } from './constants';
-import { ErrorSchema, GenericObjectType, RJSFValidationError } from './types';
+import { ERRORS_KEY } from './constants.ts';
+import { ErrorSchema, GenericObjectType, RJSFValidationError } from './types.ts';
 
 /** Converts an `errorSchema` into a list of `RJSFValidationErrors`
  *

@@ -1,6 +1,6 @@
 import get from 'lodash/get';
-import { PROPERTIES_KEY } from './constants';
-import { RJSFSchema, StrictRJSFSchema } from './types';
+import { PROPERTIES_KEY } from './constants.ts';
+import { RJSFSchema, StrictRJSFSchema } from './types.ts';
 
 /** Compares the value of `discriminatorField` within `formData` against the value of `discriminatorField` within schema for each `option`.
  * Returns index of first `option` whose discriminator matches formData. Returns `undefined` if there is no match.

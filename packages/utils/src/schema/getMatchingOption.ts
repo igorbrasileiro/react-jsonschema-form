@@ -2,9 +2,9 @@ import get from 'lodash/get';
 import has from 'lodash/has';
 import isNumber from 'lodash/isNumber';
 
-import { PROPERTIES_KEY } from '../constants';
-import { FormContextType, RJSFSchema, StrictRJSFSchema, ValidatorType } from '../types';
-import getOptionMatchingSimpleDiscriminator from '../getOptionMatchingSimpleDiscriminator';
+import { PROPERTIES_KEY } from '../constants.ts';
+import { FormContextType, RJSFSchema, StrictRJSFSchema, ValidatorType } from '../types.ts';
+import getOptionMatchingSimpleDiscriminator from '../getOptionMatchingSimpleDiscriminator.ts';
 
 /** Given the `formData` and list of `options`, attempts to find the index of the option that best matches the data.
  * Deprecated, use `getFirstMatchingOption()` instead.

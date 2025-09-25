@@ -1,4 +1,4 @@
-import deepEquals from './deepEquals';
+import deepEquals from './deepEquals.ts';
 import {
   ErrorSchema,
   Experimental_CustomMergeAllOf,
@@ -13,7 +13,7 @@ import {
   UiSchema,
   ValidationData,
   ValidatorType,
-} from './types';
+} from './types.ts';
 import {
   getDefaultFormState,
   getDisplayLabel,
@@ -28,7 +28,7 @@ import {
   sanitizeDataForNewSchema,
   toIdSchema,
   toPathSchema,
-} from './schema';
+} from './schema/index.ts';
 
 /** The `SchemaUtils` class provides a wrapper around the publicly exported APIs in the `utils/schema` directory such
  * that one does not have to explicitly pass the `validator`, `rootSchema`, `experimental_defaultFormStateBehavior` or
